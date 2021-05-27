@@ -1,0 +1,18 @@
+html {
+    background-color: black;
+}
+
+#page-title {
+    margin: 10px 20% 30% 20%;
+    align-items: center;
+    color: yellow;
+    display: flex;
+    flex-direction: column;
+}
+
+
+button {
+    color: yellow;
+    background-color: black;
+    border-color: yellow;
+}
