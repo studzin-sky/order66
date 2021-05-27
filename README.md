@@ -1,6 +1,6 @@
 # order66
 <br>
-<b>27th May 2021</b>
+<b>~27th May 2021~</b> <br>
 I want to create my first react app, using REST API 'SWAPI'.
 <br>
 <br>
