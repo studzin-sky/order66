@@ -1,0 +1,7 @@
+.header {
+    background-color: black;
+    border-color: yellow;
+    color: yellow;
+    border-style: groove;
+    padding: 5px 10px 5px 10px;
+}

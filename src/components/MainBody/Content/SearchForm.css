@@ -1,0 +1,18 @@
+.new-search__outro {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-color: yellow;
+    color: yellow;
+    background-color: transparent;
+    border-style: groove;
+    padding: 5px 10px 5px 10px;
+}
+
+.new-search-text {
+    background-color: transparent;
+    color: yellow;
+    border-color: yellow;
+    border-style: groove;
+    padding: 5px 5px 5px 5px;
+}
