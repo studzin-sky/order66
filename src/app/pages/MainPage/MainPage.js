@@ -1,8 +1,8 @@
 import React from 'react';
-import './MainBody.css';
+import './MainPage.css';
 
-import Header from './Header/Header';
-import Content from './Content/Content';
+import {Header} from '../../components/Header';
+import {Content} from '../../components/Content';
 
 const DUMMY_DATA = [
     {
@@ -22,7 +22,7 @@ const DUMMY_DATA = [
     }
 ]
 
-const MainBody = () => {
+export const MainPage = () => {
     return (
     <div className='outer-body'>
         <Header />
@@ -30,5 +30,3 @@ const MainBody = () => {
     </div>
     );
 }
-
-export default MainBody;

@@ -1,11 +1,11 @@
 import React from "react";
 
 import "./Content.css";
-import SearchForm from './SearchForm';
-import LoreData from './LoreData';
+import {SearchForm} from '../SearchForm/SearchForm';
+import {LoreData} from '../LoreData';
 
 
-const Content = (props) => {
+export const Content = (props) => {
 
   return (
   <div>
@@ -14,5 +14,3 @@ const Content = (props) => {
   </div>
   );
 };
-
-export default Content;

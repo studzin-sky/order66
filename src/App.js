@@ -1,8 +1,8 @@
 import "./App.css";
-import MainBody from "./components/MainBody/MainBody";
+import { MainPage } from "./app/pages/MainPage";
 
 const App = () => {
-  return <MainBody />;
+  return <MainPage />;
 };
 
 export default App;

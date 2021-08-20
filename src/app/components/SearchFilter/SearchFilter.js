@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 
-const SearchFilter = (props) => {
+export const SearchFilter = (props) => {
   const [enteredType, setEnteredType] = useState("people");
 
   const dropdownChangeHandler = (event) => {
-
     setEnteredType(event.target.value);
   };
 
@@ -26,5 +25,3 @@ const SearchFilter = (props) => {
     </div>
   );
 };
-
-export default SearchFilter;

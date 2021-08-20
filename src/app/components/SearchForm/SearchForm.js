@@ -1,9 +1,9 @@
 import React from "react";
-import SearchFilter from "./SearchFilter";
-import Button from './StyledButton';
+import {SearchFilter} from "../SearchFilter";
+import {Button} from './styled';
 import "./SearchForm.css";
 
-const SearchForm = (props) => {
+export const SearchForm = (props) => {
   const typeFilter = (type) => {
     console.log(type);
   };
@@ -29,5 +29,3 @@ const SearchForm = (props) => {
     </form>
   );
 };
-
-export default SearchForm;
