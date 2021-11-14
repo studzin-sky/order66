@@ -19,6 +19,21 @@ const DUMMY_DATA = [
         id: 'starship/1',
         name: 'Millenium Falcon',
         type: 'starship',
+    }, 
+    {
+        id: 'films/1',
+        name: 'A New Hope',
+        type: 'films',
+    },
+    {
+        id: 'vehicles/1',
+        name: 'Sand Crawler',
+        type: 'vehicles',
+    },
+    {
+        id: 'species/1',
+        name: 'Human',
+        type: 'species',
     }
 ]
 

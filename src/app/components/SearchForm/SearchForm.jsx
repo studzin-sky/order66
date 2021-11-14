@@ -1,6 +1,6 @@
 import React from "react";
-import {SearchFilter} from "../SearchFilter";
-import {Button} from './styled';
+import { SearchFilter } from "../SearchFilter";
+import { Button } from './styled';
 import "./SearchForm.css";
 
 export const SearchForm = (props) => {
