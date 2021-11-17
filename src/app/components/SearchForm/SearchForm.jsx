@@ -3,9 +3,11 @@ import { SearchFilter } from "../SearchFilter";
 import { Button } from './styled';
 import "./SearchForm.css";
 
-export const SearchForm = (props) => {
-  const typeFilter = (type) => {
-    console.log(type);
+export const SearchForm = props => {
+
+
+  const typeFilter = type => {
+    props.onReturnedType(type);
   };
 
   const submitHandler = () => {
@@ -15,6 +17,9 @@ export const SearchForm = (props) => {
   const onChangeHandler = (items) => {
     console.log(items.target.value);
   };
+
+
+
 
   return (
     <form onSubmit={submitHandler}>

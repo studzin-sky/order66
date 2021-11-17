@@ -6,10 +6,14 @@ import {LoreData} from '../LoreData';
 
 
 export const Content = (props) => {
+  
+  const returnedType = type => {
+    console.log(type);
+  }
 
   return (
   <div>
-    <SearchForm items={props.items} />
+    <SearchForm onReturnedType = {returnedType} />
     <LoreData items={props.items} />
   </div>
   );

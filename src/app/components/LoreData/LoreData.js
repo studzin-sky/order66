@@ -3,7 +3,7 @@ import React from "react";
 import "./LoreData.css";
 
 export const LoreData = (props) => {
-  const renderItems = () => {
+  const renderItems = () => { 
     return props.items.map((item) => {
       return (
         <div key={item.id} className="lore-data">
