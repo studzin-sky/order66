@@ -28,7 +28,7 @@ export const SearchForm = props => {
           <label>The name, You have to write</label>
           <input type="text" className='new-search-text' onChange={onChangeHandler} />
         </div>
-        <SearchFilter onTypeFilter={typeFilter} />
+        <SearchFilter selected = {props.selected} onChangeType={typeFilter} />
         <Button>use the force</Button>
       </div>
     </form>

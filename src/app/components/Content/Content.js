@@ -7,7 +7,7 @@ import {LoreData} from '../LoreData';
 
 export const Content = (props) => {
 
-  const [pulledType, setPulledType] = useState('');
+  const [pulledType, setPulledType] = useState('people');
   
   const returnedType = type => {
     setPulledType(type);
@@ -18,7 +18,7 @@ export const Content = (props) => {
 
   return (
   <div>
-    <SearchForm onReturnedType = {returnedType} />
+    <SearchForm selected = {pulledType} onReturnedType = {returnedType} />
     <LoreData items={props.items} type={pulledTypeVal}/>
   </div>
   );

@@ -1,20 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 
 export const SearchFilter = (props) => {
-  const [enteredType, setEnteredType] = useState('people');
 
   const dropdownChangeHandler = (event) => {
-    setEnteredType(event.target.value);
+    props.onChangeType(event.target.value);
   };
 
-  const filteredType = enteredType;
 
-  props.onTypeFilter(filteredType);
 
   return (
     <div>
       <label>a type You choose</label>
-      <select value={enteredType} onChange={dropdownChangeHandler}>
+      <select value={props.selected} onChange={dropdownChangeHandler}>
         <option value="people">people</option>
         <option value="planet">planet</option>
         <option value="starship">starship</option>
