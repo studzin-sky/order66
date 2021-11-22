@@ -3,6 +3,7 @@ import React from "react";
 import "./LoreData.css";
 
 export const LoreData = (props) => {
+  console.log(props.type);
   const renderItems = () => { 
     return props.items.map((item) => {
       return (

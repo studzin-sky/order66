@@ -5,7 +5,7 @@ import "./SearchForm.css";
 
 export const SearchForm = props => {
 
-
+  
   const typeFilter = type => {
     props.onReturnedType(type);
   };
