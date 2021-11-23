@@ -11,7 +11,7 @@ export const SearchForm = props => {
   };
 
   const submitHandler = () => {
-    console.log(props.items);
+    console.log('submit');
   };
 
   const onChangeHandler = (items) => {
