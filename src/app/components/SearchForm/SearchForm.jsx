@@ -1,22 +1,21 @@
-import React from "react";
+import React, { useRef } from "react";
 import { SearchFilter } from "../SearchFilter";
 import { Button } from './styled';
 import "./SearchForm.css";
 
 export const SearchForm = props => {
 
-  
+  const inputRef = useRef();
+
   const typeFilter = type => {
     props.onReturnedType(type);
   };
 
   const submitHandler = () => {
-    console.log('submit');
+   props.submit(inputRef.current.value);
   };
 
-  const onChangeHandler = (items) => {
-    console.log(items.target.value);
-  };
+  // submitHandler needs to send input up to Content
 
 
 
@@ -26,9 +25,9 @@ export const SearchForm = props => {
       <div className="new-search__outro">
         <div>
           <label>The name, You have to write</label>
-          <input type="text" className='new-search-text' onChange={onChangeHandler} />
+          <input type="text" className='new-search-text' ref={inputRef} />
         </div>
-        <SearchFilter selected = {props.selected} onChangeType={typeFilter} />
+        <SearchFilter selected={props.selected} onChangeType={typeFilter} />
         <Button>use the force</Button>
       </div>
     </form>

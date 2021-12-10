@@ -9,7 +9,7 @@ export const SearchFilter = (props) => {
 
 
   return (
-    <div>
+    <>
       <label>a type You choose</label>
       <select value={props.selected} onChange={dropdownChangeHandler}>
         <option value="people">people</option>
@@ -19,6 +19,6 @@ export const SearchFilter = (props) => {
         <option value='vehicles'>vehicle</option>
         <option value='species'>species</option>
       </select>
-    </div>
+    </>
   );
 };

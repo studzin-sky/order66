@@ -1,25 +1,33 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 import "./Content.css";
-import {SearchForm} from '../SearchForm/SearchForm';
-import {LoreData} from '../LoreData';
-
+import { SearchForm } from "../SearchForm/SearchForm";
+import { LoreData } from "../LoreData";
+import { Sandbox } from "../Sandbox/sandbox";
 
 export const Content = (props) => {
+  const [pulledType, setPulledType] = useState("people");
+  const [submitValue, setSubmitValue] = useState("");
 
-  const [pulledType, setPulledType] = useState('people');
-  
-  const returnedType = type => {
+  const returnedType = (type) => {
     setPulledType(type);
-  }
-  
+  };
+
+  const submitHandler = (val) => {
+    setSubmitValue(val);
+  };
+
   const pulledTypeVal = pulledType;
 
-
   return (
-  <div>
-    <SearchForm selected = {pulledType} onReturnedType = {returnedType} />
-    <LoreData items={props.items} type={pulledTypeVal}/>
-  </div>
+    <>
+      <SearchForm
+        submit={submitHandler}
+        selected={pulledType}
+        onReturnedType={returnedType}
+      />
+      <LoreData items={props.items} type={pulledTypeVal} />
+      <Sandbox submit={submitValue}></Sandbox>
+    </>
   );
 };
