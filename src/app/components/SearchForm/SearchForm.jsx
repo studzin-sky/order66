@@ -11,7 +11,8 @@ export const SearchForm = props => {
     props.onReturnedType(type);
   };
 
-  const submitHandler = () => {
+  const submitHandler = (e) => {
+    e.preventDefault();
    props.submit(inputRef.current.value);
   };
 
@@ -28,7 +29,7 @@ export const SearchForm = props => {
           <input type="text" className='new-search-text' ref={inputRef} />
         </div>
         <SearchFilter selected={props.selected} onChangeType={typeFilter} />
-        <Button>use the force</Button>
+        <Button type='submit'>use the force</Button>
       </div>
     </form>
   );
