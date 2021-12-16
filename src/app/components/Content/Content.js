@@ -9,6 +9,7 @@ export const Content = (props) => {
   const [pulledType, setPulledType] = useState("people");
   // state changes on chosen type
   const [history, setHistory] = useState([]);
+  const [swData, setSwData] = useState(props.items);
 
   const returnedType = (type) => {
     setPulledType(type);
@@ -30,29 +31,29 @@ export const Content = (props) => {
   const fetchSwapi = (type) => {
     switch (type) {
       case "people":
-        return fetch('https://www.swapi.tech/api/people/')
-        .then(res => res.json())
-        .then(data => console.log(data.results))
+        return fetch("https://www.swapi.tech/api/people/")
+          .then((res) => res.json())
+          .then((data) => setSwData(data.results));
       case "planet":
-        return fetch('https://www.swapi.tech/api/planets/')
-        .then(res => res.json())
-        .then(data => console.log(data.results))
+        return fetch("https://www.swapi.tech/api/planets/")
+          .then((res) => res.json())
+          .then((data) => setSwData(data.results));
       case "starship":
-        return fetch('https://www.swapi.tech/api/starships/')
-        .then(res => res.json())
-        .then(data => console.log(data.results))
+        return fetch("https://www.swapi.tech/api/starships/")
+          .then((res) => res.json())
+          .then((data) => setSwData(data.results));
       case "films":
-        return fetch('https://www.swapi.tech/api/films/')
-        .then(res => res.json())
-        .then(data => console.log(data.results))
+        return fetch("https://www.swapi.tech/api/films/")
+          .then((res) => res.json())
+          .then((data) => setSwData(data.results));
       case "vehicles":
-        return fetch('https://www.swapi.tech/api/vehicles/')
-        .then(res => res.json())
-        .then(data => console.log(data.results))
+        return fetch("https://www.swapi.tech/api/vehicles/")
+          .then((res) => res.json())
+          .then((data) => setSwData(data.results));
       case "species":
-        return fetch('https://www.swapi.tech/api/species/')
-        .then(res => res.json())
-        .then(data => console.log(data.results))
+        return fetch("https://www.swapi.tech/api/species/")
+          .then((res) => res.json())
+          .then((data) => setSwData(data.results));
       default:
     }
   };
@@ -67,7 +68,7 @@ export const Content = (props) => {
         selected={pulledType}
         onReturnedType={returnedType}
       />
-      <LoreData items={props.items} type={pulledTypeVal} />
+      <LoreData items={swData} type={pulledTypeVal} />
       <History history={history}></History>
     </>
   );
