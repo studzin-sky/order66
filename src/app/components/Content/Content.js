@@ -12,17 +12,51 @@ export const Content = (props) => {
 
   const returnedType = (type) => {
     setPulledType(type);
+    fetchSwapi(type);
   };
 
   const submitHandler = (val) => {
-    setHistory((prevHistory => {
+    setHistory((prevHistory) => {
       return [
-        ...prevHistory, {
-          name: val, id: Math.random().toString()
+        ...prevHistory,
+        {
+          name: val,
+          id: Math.random().toString(),
         },
       ];
-    }));
+    });
   };
+
+  const fetchSwapi = (type) => {
+    switch (type) {
+      case "people":
+        return fetch('https://www.swapi.tech/api/people/')
+        .then(res => res.json())
+        .then(data => console.log(data.results))
+      case "planet":
+        return fetch('https://www.swapi.tech/api/planets/')
+        .then(res => res.json())
+        .then(data => console.log(data.results))
+      case "starship":
+        return fetch('https://www.swapi.tech/api/starships/')
+        .then(res => res.json())
+        .then(data => console.log(data.results))
+      case "films":
+        return fetch('https://www.swapi.tech/api/films/')
+        .then(res => res.json())
+        .then(data => console.log(data.results))
+      case "vehicles":
+        return fetch('https://www.swapi.tech/api/vehicles/')
+        .then(res => res.json())
+        .then(data => console.log(data.results))
+      case "species":
+        return fetch('https://www.swapi.tech/api/species/')
+        .then(res => res.json())
+        .then(data => console.log(data.results))
+      default:
+    }
+  };
+  //switch statement to filter types with fetch from swapi
 
   const pulledTypeVal = pulledType;
 
