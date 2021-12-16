@@ -45,7 +45,8 @@ export const Content = (props) => {
       case "films":
         return fetch("https://www.swapi.tech/api/films/")
           .then((res) => res.json())
-          .then((data) => setSwData(data.results));
+          .then((data) => setSwData(data.result))
+          .catch(err => console.error(err));
       case "vehicles":
         return fetch("https://www.swapi.tech/api/vehicles/")
           .then((res) => res.json())

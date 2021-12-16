@@ -6,32 +6,32 @@ import { Content } from "../../components/Content";
 
 const DUMMY_DATA = [
   {
-    id: "people/1",
+    uid: "people/1",
     name: "Luke Skywalker",
     type: "people",
   },
   {
-    id: "planet/1",
+    uid: "planet/1",
     name: "Naboo",
     type: "planet",
   },
   {
-    id: "starship/1",
+    uid: "starship/1",
     name: "Millenium Falcon",
     type: "starship",
   },
   {
-    id: "films/1",
+    uid: "films/1",
     name: "A New Hope",
     type: "films",
   },
   {
-    id: "vehicles/1",
+    uid: "vehicles/1",
     name: "Sand Crawler",
     type: "vehicles",
   },
   {
-    id: "species/1",
+    uid: "species/1",
     name: "Human",
     type: "species",
   },
