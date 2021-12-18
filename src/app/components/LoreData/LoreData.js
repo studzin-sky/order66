@@ -9,8 +9,8 @@ export const LoreData = (props) => {
     return props.items.map((item) => {
       return (
         <div key={item.uid} className="lore-data">
-          <h2>Name: {item.name}</h2>
-          <p>Type: {item.description}</p>
+          <h2>{item.name}</h2>
+          <p>{item.description}</p>
         </div>
       );
     });
