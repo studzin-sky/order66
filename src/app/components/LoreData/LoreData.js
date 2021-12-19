@@ -3,9 +3,6 @@ import { Container } from "../../styled/styled";
 
 
 export const LoreData = (props) => {
-  //const filteredArray = props.items.filter((item) => item.type === props.type);
-  //filtered array with types chosen in searchFilter
-  //const renderItems = () => {
     return props.items.map((item) => {
       return (
         <Container key={item.uid}>
@@ -15,6 +12,3 @@ export const LoreData = (props) => {
       );
     });
   };
-  // maps the arrays that match the type chosen by the user
-  //return renderItems();
-//};

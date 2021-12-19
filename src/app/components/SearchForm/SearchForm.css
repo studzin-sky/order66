@@ -18,5 +18,7 @@
 }
 
 .search-form {
-    grid-area: header;
+    margin-left: 15%;
+    width: 70%;
+
 }

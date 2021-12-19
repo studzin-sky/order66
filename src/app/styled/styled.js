@@ -1,10 +1,22 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Button = styled.button`
   background: transparent;
   border-style: groove;
   border-color: yellow;
   color: yellow;
+
+  ${props => props.tile && css`
+  margin: 20px 20px 20px 20px;
+  border: 4px groove yellow;
+  color: yellow;
+  background-color: transparent;
+  text-align: center;
+  &:hover {
+    transform: translate(0%, -10%);
+    transition: 0.3s ease-out;
+  }
+`}
 `;
 
 export const Main = styled.div`
@@ -28,6 +40,7 @@ justify-content: space-evenly;
 export const Column = styled.div`
   display: flex;
   flex-direction: column;
+  width: 33%;
 `;
 
 export const Container = styled.div`
@@ -36,4 +49,5 @@ export const Container = styled.div`
   color: yellow;
   background-color: transparent;
   text-align: center;
-`;
+
+`

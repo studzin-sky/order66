@@ -1,13 +1,20 @@
 import React from "react";
-import { Container } from "../../styled/styled";
+import { Button } from "../../styled/styled";
 
 export const Tiles = (props) => {
-  return props.type.map((item) => {
+  const fetchData = (e) => {
+     const noSpace=e.target.name.replace(/\s/g, '');
+    return fetch(`https://www.swapi.tech/api/${props.type}/?name=${noSpace}`)
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.error(err)); 
+  };
+
+  return props.items.map((item) => {
     return (
-      <Container key={item.uid}>
-        <h2>{item.name}</h2>
-        <p>{item.description}</p>
-      </Container>
+      <Button tile key={item.uid} name={item.name} onClick={fetchData}>
+        {item.name}
+      </Button>
     );
   });
 };

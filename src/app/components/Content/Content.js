@@ -54,7 +54,6 @@ export const Content = (props) => {
               return {
                 uid: movieData.uid,
                 name: movieData.properties.title,
-                description: movieData.properties.opening_crawl,
               };
             });
             setSwData(transformedMovies);
@@ -86,10 +85,10 @@ export const Content = (props) => {
       />
       <Row>
         <Column>
-          <Tiles type={swData} />
+          <Tiles items={swData} type={pulledTypeVal} />
         </Column>
         <Column>
-          <LoreData items={swData} type={pulledTypeVal} />
+          <LoreData items={props.items} type={pulledTypeVal} />
         </Column>
         <Column>
           <History history={history}></History>
