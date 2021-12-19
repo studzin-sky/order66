@@ -1,6 +1,6 @@
 import React from "react";
-import "./MainPage.css";
 
+import { Main } from "../../styled/styled";
 import { Header } from "../../components/Header";
 import { Content } from "../../components/Content";
 
@@ -39,9 +39,9 @@ const DUMMY_DATA = [
 
 export const MainPage = () => {
   return (
-    <div className="outer-body">
+    <Main>
       <Header />
       <Content items={DUMMY_DATA} />
-    </div>
+    </Main>
   );
 };

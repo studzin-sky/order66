@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { SearchFilter } from "../SearchFilter";
-import { Button } from "./styled";
+import { Button } from "../../styled/styled";
 import "./SearchForm.css";
 
 export const SearchForm = (props) => {

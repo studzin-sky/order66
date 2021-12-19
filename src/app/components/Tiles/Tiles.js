@@ -1,14 +1,13 @@
 import React from "react";
-
-import "./Tiles.css";
+import { Container } from "../../styled/styled";
 
 export const Tiles = (props) => {
   return props.type.map((item) => {
     return (
-      <div key={item.uid} className="tiles">
+      <Container key={item.uid}>
         <h2>{item.name}</h2>
         <p>{item.description}</p>
-      </div>
+      </Container>
     );
   });
 };

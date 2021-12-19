@@ -1,6 +1,6 @@
 import React from "react";
+import { Container } from "../../styled/styled";
 
-import "./LoreData.css";
 
 export const LoreData = (props) => {
   //const filteredArray = props.items.filter((item) => item.type === props.type);
@@ -8,10 +8,10 @@ export const LoreData = (props) => {
   //const renderItems = () => {
     return props.items.map((item) => {
       return (
-        <div key={item.uid} className="lore-data">
+        <Container key={item.uid}>
           <h2>{item.name}</h2>
           <p>{item.description}</p>
-        </div>
+        </Container>
       );
     });
   };

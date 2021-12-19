@@ -1,18 +1,15 @@
 import React from "react";
-
-import './History.css';
+import { Container } from "../../styled/styled";
 
 export const History = (props) => {
   return (
-    <>
+    <Container>
       <ul className="history">
         {props.history.map((point) => (
-          <li key={point.id}>
-            {point.name}
-          </li>
+          <li key={point.id}>{point.name}</li>
         ))}
       </ul>
-    </>
+    </Container>
   );
 };
 

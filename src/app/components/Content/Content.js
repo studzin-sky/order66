@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-import "./Content.css";
+import { Row, Column } from "../../styled/styled";
 import { SearchForm } from "../SearchForm/SearchForm";
 import { LoreData } from "../LoreData";
 import { History } from "../History/History";
-import {Tiles} from "../Tiles/Tiles";
+import { Tiles } from "../Tiles/Tiles";
 
 export const Content = (props) => {
   const [pulledType, setPulledType] = useState("people");
@@ -34,7 +34,7 @@ export const Content = (props) => {
       case "people":
         return fetch("https://www.swapi.tech/api/people/")
           .then((res) => res.json())
-          .then(data => setSwData(data.results))
+          .then((data) => setSwData(data.results))
           .catch(() => setSwData(props.items));
       case "planet":
         return fetch("https://www.swapi.tech/api/planets/")
@@ -50,14 +50,14 @@ export const Content = (props) => {
         return fetch("https://www.swapi.tech/api/films/")
           .then((res) => res.json())
           .then((data) => {
-            const transformedMovies = data.result.map(movieData => {
+            const transformedMovies = data.result.map((movieData) => {
               return {
                 uid: movieData.uid,
                 name: movieData.properties.title,
-                description: movieData.properties.opening_crawl
+                description: movieData.properties.opening_crawl,
               };
-            }); 
-            setSwData(transformedMovies); 
+            });
+            setSwData(transformedMovies);
           })
           .catch(() => setSwData(props.items));
       case "vehicles":
@@ -78,15 +78,23 @@ export const Content = (props) => {
   const pulledTypeVal = pulledType;
 
   return (
-    <div className="content">
+    <>
       <SearchForm
         submit={submitHandler}
         selected={pulledType}
         onReturnedType={returnedType}
       />
-      <Tiles type={swData} />
-      <LoreData  items={swData} type={pulledTypeVal} />
-      <History history={history}></History>
-    </div>
+      <Row>
+        <Column>
+          <Tiles type={swData} />
+        </Column>
+        <Column>
+          <LoreData items={swData} type={pulledTypeVal} />
+        </Column>
+        <Column>
+          <History history={history}></History>
+        </Column>
+      </Row>
+    </>
   );
 };
