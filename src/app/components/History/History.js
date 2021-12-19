@@ -1,6 +1,6 @@
 import React from "react";
 
-import './history.css';
+import './History.css';
 
 export const History = (props) => {
   return (

@@ -18,7 +18,7 @@ export const SearchForm = (props) => {
   // submitHandler needs to send input up to Content
 
   return (
-    <form onSubmit={submitHandler}>
+    <form className="search-form" onSubmit={submitHandler}>
       <div className="new-search__outro">
         <div>
           <label>The name, You have to write</label>

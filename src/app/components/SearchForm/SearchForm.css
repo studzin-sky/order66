@@ -16,3 +16,7 @@
     border-style: groove;
     padding: 5px 5px 5px 5px;
 }
+
+.search-form {
+    grid-area: header;
+}

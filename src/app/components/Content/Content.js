@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import "./Content.css";
 import { SearchForm } from "../SearchForm/SearchForm";
 import { LoreData } from "../LoreData";
-import { History } from "../Sandbox/history";
+import { History } from "../History/History";
+import {Tiles} from "../Tiles/Tiles";
 
 export const Content = (props) => {
   const [pulledType, setPulledType] = useState("people");
@@ -31,7 +32,7 @@ export const Content = (props) => {
   const fetchSwapi = (type) => {
     switch (type) {
       case "people":
-        return fetch("https://www.swapi.tech/api/peoeple/")
+        return fetch("https://www.swapi.tech/api/people/")
           .then((res) => res.json())
           .then(data => setSwData(data.results))
           .catch(() => setSwData(props.items));
@@ -72,19 +73,20 @@ export const Content = (props) => {
       default:
     }
   };
-  //switch statement to filter types with fetch from swapi
+  //switch statement to filter types with fetch from swapi to Tiles
 
   const pulledTypeVal = pulledType;
 
   return (
-    <>
+    <div className="content">
       <SearchForm
         submit={submitHandler}
         selected={pulledType}
         onReturnedType={returnedType}
       />
-      <LoreData items={swData} type={pulledTypeVal} />
+      <Tiles type={swData} />
+      <LoreData  items={swData} type={pulledTypeVal} />
       <History history={history}></History>
-    </>
+    </div>
   );
 };
