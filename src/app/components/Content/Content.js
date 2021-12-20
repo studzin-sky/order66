@@ -11,6 +11,7 @@ export const Content = (props) => {
   // state changes on chosen type
   const [history, setHistory] = useState([]);
   const [swData, setSwData] = useState(props.items);
+  const [tileData, setTileData] = useState();
 
   const returnedType = (type) => {
     setPulledType(type);
@@ -36,12 +37,12 @@ export const Content = (props) => {
           .then((res) => res.json())
           .then((data) => setSwData(data.results))
           .catch(() => setSwData(props.items));
-      case "planet":
+      case "planets":
         return fetch("https://www.swapi.tech/api/planets/")
           .then((res) => res.json())
           .then((data) => setSwData(data.results))
           .catch(() => setSwData(props.items));
-      case "starship":
+      case "starships":
         return fetch("https://www.swapi.tech/api/starships/")
           .then((res) => res.json())
           .then((data) => setSwData(data.results))
@@ -73,7 +74,10 @@ export const Content = (props) => {
     }
   };
   //switch statement to filter types with fetch from swapi to Tiles
-
+  const idData = (id) => {
+    //console.log(name);
+    setTileData(id);
+  };
   const pulledTypeVal = pulledType;
 
   return (
@@ -85,10 +89,10 @@ export const Content = (props) => {
       />
       <Row>
         <Column>
-          <Tiles items={swData} type={pulledTypeVal} />
+          <Tiles items={swData} type={pulledTypeVal} onReturnedData={idData}/>
         </Column>
         <Column>
-          <LoreData items={props.items} type={pulledTypeVal} />
+          <LoreData id={tileData} type={pulledTypeVal} />
         </Column>
         <Column>
           <History history={history}></History>

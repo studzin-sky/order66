@@ -13,8 +13,8 @@ export const SearchFilter = (props) => {
       <label>a type You choose</label>
       <select value={props.selected} onChange={dropdownChangeHandler}>
         <option value="people">people</option>
-        <option value="planet">planet</option>
-        <option value="starship">starship</option>
+        <option value="planets">planet</option>
+        <option value="starships">starship</option>
         <option value='films'>films</option>
         <option value='vehicles'>vehicle</option>
         <option value='species'>species</option>
