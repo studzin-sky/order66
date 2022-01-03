@@ -12,10 +12,11 @@ export const Content = (props) => {
   const [history, setHistory] = useState([]);
   const [swData, setSwData] = useState(props.items);
   const [tileData, setTileData] = useState();
+  //const [loreData, setLoreData] = useState();
 
   const returnedType = (type) => {
     setPulledType(type);
-    fetchSwapi(type);
+    fetchTile(type);
   };
 
   const submitHandler = (val) => {
@@ -30,7 +31,7 @@ export const Content = (props) => {
     });
   };
 
-  const fetchSwapi = (type) => {
+  const fetchTile = (type) => {
     switch (type) {
       case "people":
         return fetch("https://www.swapi.tech/api/people/")
@@ -73,10 +74,13 @@ export const Content = (props) => {
       default:
     }
   };
-  //switch statement to filter types with fetch from swapi to Tiles
-  const idData = (id) => {
+
+  const idData = (type) => {
     //console.log(name);
-    setTileData(id);
+    console.log(type.type);
+    console.log(type.id);
+    setTileData(type);
+    //console.log(tileData);
   };
   const pulledTypeVal = pulledType;
 
@@ -92,7 +96,7 @@ export const Content = (props) => {
           <Tiles items={swData} type={pulledTypeVal} onReturnedData={idData}/>
         </Column>
         <Column>
-          <LoreData id={tileData} type={pulledTypeVal} />
+          <LoreData item={tileData} />
         </Column>
         <Column>
           <History history={history}></History>
