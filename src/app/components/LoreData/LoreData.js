@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "../../styled/styled";
 import { LoreType } from "../LoreType";
 
 export const LoreData = (props) => {
   const [loreArray, setLoreArray] = useState([]);
   const fetchLoreHandler = (tileObject) => {
+    if (!tileObject) {
+      return setLoreArray({ id: 1, title: "Here you'll find lore" });
+    }
     switch (tileObject.type) {
       case "people":
         return fetch(`https://www.swapi.tech/api/people/${tileObject.id}`)
@@ -118,7 +121,7 @@ export const LoreData = (props) => {
             };
 
             setLoreArray(transformedLore);
-            console.log('fetching...');
+            console.log("fetching...");
           })
           .catch(() => {
             const errorLore = () => {
@@ -157,18 +160,22 @@ export const LoreData = (props) => {
         break;
     }
   };
-  if (props.item) {
+
+  useEffect(() => {
     fetchLoreHandler(props.item);
+    return () => {
+      const cleanObj = {
+        id: 1,
+        title: "Loading",
+      };
+      setLoreArray(cleanObj);
+    };
+  }, [props.item]);
+
+  
     return (
       <Container>
         <LoreType lore={loreArray} />
       </Container>
     );
-  } else {
-    return (
-      <Container>
-        <p>Here you'll find lore</p>
-      </Container>
-    );
-  }
-};
+  };
