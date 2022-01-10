@@ -10,16 +10,20 @@ export const Content = (props) => {
   const [pulledType, setPulledType] = useState("people");
   // state changes on chosen type
   const [history, setHistory] = useState([]);
-  const [swData, setSwData] = useState(props.items);
+  const [swData, setSwData] = useState([]);
   const [tileData, setTileData] = useState();
-  //const [loreData, setLoreData] = useState();
 
-  const returnedType = (type) => {
+  
+   const returnedType = (type) => {
     setPulledType(type);
-    fetchTile(type);
   };
-
+ 
   const submitHandler = (val) => {
+    const pulledSearchFormObject = {
+      name: val,
+      type: pulledType
+    };
+    fetchTile(pulledSearchFormObject);
     setHistory((prevHistory) => {
       return [
         ...prevHistory,
@@ -31,25 +35,25 @@ export const Content = (props) => {
     });
   };
 
-  const fetchTile = (type) => {
-    switch (type) {
+  const fetchTile = (subValue) => {
+    switch (subValue.type) {
       case "people":
-        return fetch("https://www.swapi.tech/api/people/")
+        return fetch(`https://www.swapi.tech/api/people/?name=${subValue.name}`)
           .then((res) => res.json())
-          .then((data) => setSwData(data.results))
+          .then((data) => setSwData(data.result))
           .catch(() => setSwData(props.items));
       case "planets":
-        return fetch("https://www.swapi.tech/api/planets/")
+        return fetch(`https://www.swapi.tech/api/planets/?name=${subValue.name}`)
           .then((res) => res.json())
           .then((data) => setSwData(data.results))
           .catch(() => setSwData(props.items));
       case "starships":
-        return fetch("https://www.swapi.tech/api/starships/")
+        return fetch(`https://www.swapi.tech/api/starships/?name=${subValue.name}`)
           .then((res) => res.json())
           .then((data) => setSwData(data.results))
           .catch(() => setSwData(props.items));
       case "films":
-        return fetch("https://www.swapi.tech/api/films/")
+        return fetch(`https://www.swapi.tech/api/films/?title=${subValue.name}`)
           .then((res) => res.json())
           .then((data) => {
             const transformedMovies = data.result.map((movieData) => {
@@ -62,25 +66,24 @@ export const Content = (props) => {
           })
           .catch(() => setSwData(props.items));
       case "vehicles":
-        return fetch("https://www.swapi.tech/api/vehicles/")
+        return fetch(`https://www.swapi.tech/api/vehicles/?name=${subValue.name}`)
           .then((res) => res.json())
-          .then((data) => setSwData(data.results))
+          .then((data) => setSwData(data.result))
           .catch(() => setSwData(props.items));
       case "species":
-        return fetch("https://www.swapi.tech/api/species/")
+        return fetch(`https://www.swapi.tech/api/species/`)
           .then((res) => res.json())
-          .then((data) => setSwData(data.results))
+          .then((data) => setSwData(data.result))
           .catch(() => setSwData(props.items));
       default:
+        break;
     }
   };
+  //SWAPI.tech seems to have an error with searching, only people
+  //can be searched through, the rest is rendering randomly
 
   const idData = (type) => {
-    //console.log(name);
-    console.log(type.type);
-    console.log(type.id);
     setTileData(type);
-    //console.log(tileData);
   };
   const pulledTypeVal = pulledType;
 
