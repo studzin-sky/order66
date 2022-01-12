@@ -6,22 +6,24 @@ import { LoreData } from "../LoreData";
 import { History } from "../History/History";
 import { Tiles } from "../Tiles/Tiles";
 
-export const Content = (props) => {
+export const Content = () => {
   const [pulledType, setPulledType] = useState("people");
   // state changes on chosen type
   const [history, setHistory] = useState([]);
   const [swData, setSwData] = useState([]);
   const [tileData, setTileData] = useState();
 
-  
-   const returnedType = (type) => {
+  const tileErrorArray = [{ uid: 666, name: "Something went wrong!" }];
+
+  const returnedType = (type) => {
     setPulledType(type);
   };
- 
+
+
   const submitHandler = (val) => {
     const pulledSearchFormObject = {
       name: val,
-      type: pulledType
+      type: pulledType,
     };
     fetchTile(pulledSearchFormObject);
     setHistory((prevHistory) => {
@@ -40,18 +42,30 @@ export const Content = (props) => {
       case "people":
         return fetch(`https://www.swapi.tech/api/people/?name=${subValue.name}`)
           .then((res) => res.json())
-          .then((data) => setSwData(data.result))
-          .catch(() => setSwData(props.items));
+          .then((data) => {
+            const transformedPeople = data.result.map((person) => {
+              return {
+                uid: person.uid,
+                name: person.properties.name,
+              };
+            });
+            setSwData(transformedPeople);
+          })
+          .catch(() => setSwData(tileErrorArray));
       case "planets":
-        return fetch(`https://www.swapi.tech/api/planets/?name=${subValue.name}`)
+        return fetch(
+          `https://www.swapi.tech/api/planets/?name=${subValue.name}`
+        )
           .then((res) => res.json())
           .then((data) => setSwData(data.results))
-          .catch(() => setSwData(props.items));
+          .catch(() => setSwData(tileErrorArray));
       case "starships":
-        return fetch(`https://www.swapi.tech/api/starships/?name=${subValue.name}`)
+        return fetch(
+          `https://www.swapi.tech/api/starships/?name=${subValue.name}`
+        )
           .then((res) => res.json())
           .then((data) => setSwData(data.results))
-          .catch(() => setSwData(props.items));
+          .catch(() => setSwData(tileErrorArray));
       case "films":
         return fetch(`https://www.swapi.tech/api/films/?title=${subValue.name}`)
           .then((res) => res.json())
@@ -64,17 +78,21 @@ export const Content = (props) => {
             });
             setSwData(transformedMovies);
           })
-          .catch(() => setSwData(props.items));
+          .catch(() => setSwData(tileErrorArray));
       case "vehicles":
-        return fetch(`https://www.swapi.tech/api/vehicles/?name=${subValue.name}`)
+        return fetch(
+          `https://www.swapi.tech/api/vehicles/?name=${subValue.name}`
+        )
           .then((res) => res.json())
-          .then((data) => setSwData(data.result))
-          .catch(() => setSwData(props.items));
+          .then((data) => setSwData(data.results))
+          .catch(() => setSwData(tileErrorArray));
       case "species":
-        return fetch(`https://www.swapi.tech/api/species/`)
+        return fetch(
+          `https://www.swapi.tech/api/species/?name=${subValue.name}`
+        )
           .then((res) => res.json())
-          .then((data) => setSwData(data.result))
-          .catch(() => setSwData(props.items));
+          .then((data) => setSwData(data.results))
+          .catch(() => setSwData(tileErrorArray));
       default:
         break;
     }
@@ -96,7 +114,7 @@ export const Content = (props) => {
       />
       <Row>
         <Column>
-          <Tiles items={swData} type={pulledTypeVal} onReturnedData={idData}/>
+          <Tiles items={swData} type={pulledTypeVal} onReturnedData={idData} />
         </Column>
         <Column>
           <LoreData item={tileData} />

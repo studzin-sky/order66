@@ -8,7 +8,6 @@ export const SearchForm = (props) => {
 
   const typeFilter = (type) => {
     props.onReturnedType(type);
-    //props.submit.type(type);
   };
 
   const submitHandler = (e) => {
@@ -16,8 +15,6 @@ export const SearchForm = (props) => {
     props.submit(inputRef.current.value);
     e.target.reset();
   };
-
-  // submitHandler needs to send input up to Content
 
   return (
     <form className="search-form" onSubmit={submitHandler}>
