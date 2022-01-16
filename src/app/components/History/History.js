@@ -5,7 +5,7 @@ export const History = (props) => {
   return (
     <Container>
       <h3>History:</h3>
-      <ul className="history">
+      <ul>
         {props.history.map((point) => (
           <li key={point.id}>{point.name}</li>
         ))}

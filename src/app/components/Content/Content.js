@@ -125,7 +125,7 @@ export const Content = () => {
           <LoreData item={tileData} />
         </Column>
         <Column>
-          <History history={history}></History>
+          <History history={history} />
         </Column>
       </Row>
     </>
