@@ -29,7 +29,7 @@ export const Content = () => {
   const historyHandler = (histValue) => {
     setHistory((prevHistory) => {
       return [
-        ...prevHistory,
+        ...prevHistory.slice(-4),
         {
           name: histValue,
           id: Math.random().toString(),
