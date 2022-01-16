@@ -7,11 +7,19 @@ export const Tiles = (props) => {
       id: e.target.id,
       type: props.type,
     });
+    props.onClickedTile(e.target.name);
+    console.log(e.target.name);
   };
 
   return props.items.map((item) => {
     return (
-      <Button tile key={item.uid} id={item.uid} onClick={fetchData}>
+      <Button
+        tile
+        key={item.uid}
+        id={item.uid}
+        name={item.name}
+        onClick={fetchData}
+      >
         {item.name}
       </Button>
     );

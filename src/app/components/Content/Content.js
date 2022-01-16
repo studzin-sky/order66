@@ -19,24 +19,24 @@ export const Content = () => {
     setPulledType(type);
   };
 
-
   const submitHandler = (val) => {
     const pulledSearchFormObject = {
       name: val,
       type: pulledType,
     };
     fetchTile(pulledSearchFormObject);
+  };
+  const historyHandler = (histValue) => {
     setHistory((prevHistory) => {
       return [
         ...prevHistory,
         {
-          name: val,
+          name: histValue,
           id: Math.random().toString(),
         },
       ];
     });
   };
-
   const fetchTile = (subValue) => {
     switch (subValue.type) {
       case "people":
@@ -114,7 +114,12 @@ export const Content = () => {
       />
       <Row>
         <Column>
-          <Tiles items={swData} type={pulledTypeVal} onReturnedData={idData} />
+          <Tiles
+            items={swData}
+            type={pulledTypeVal}
+            onReturnedData={idData}
+            onClickedTile={historyHandler}
+          />
         </Column>
         <Column>
           <LoreData item={tileData} />

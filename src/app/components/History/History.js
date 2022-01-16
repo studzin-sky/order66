@@ -4,6 +4,7 @@ import { Container } from "../../styled/styled";
 export const History = (props) => {
   return (
     <Container>
+      <h3>History:</h3>
       <ul className="history">
         {props.history.map((point) => (
           <li key={point.id}>{point.name}</li>
@@ -13,4 +14,4 @@ export const History = (props) => {
   );
 };
 
-//this component is meant to keep track of search history
+//this component is meant to keep track of clicked tiles
