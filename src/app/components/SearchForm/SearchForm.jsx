@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import { SearchFilter } from "../SearchFilter";
-import { Button } from "../../styled/styled";
-import "./SearchForm.css";
+import { Button, SearchInputDiv, SearchFormInputOutro, SearchFormDiv } from "../../styled/styled";
 
 export const SearchForm = (props) => {
   const inputRef = useRef();
@@ -17,18 +16,18 @@ export const SearchForm = (props) => {
   };
 
   return (
-    <form className="search-form" onSubmit={submitHandler}>
-      <div className="new-search__outro">
-        <div>
+    <SearchFormDiv onSubmit={submitHandler}>
+      <SearchFormInputOutro>
+        <>
           <label>The name, You have to write</label>
-          <input type="text" className="new-search-text" ref={inputRef} />
-        </div>
+          <SearchInputDiv type="text" ref={inputRef} />
+        </>
         <SearchFilter 
           selected={props.selected} 
           onChangeType={typeFilter} 
         />
         <Button type="submit">use the force</Button>
-      </div>
-    </form>
+      </SearchFormInputOutro>
+    </SearchFormDiv>
   );
 };
