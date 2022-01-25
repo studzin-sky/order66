@@ -1,8 +1,14 @@
-import React from 'react';
-import './Header.css';
+import React from "react";
+import { Button } from '../../styled/styled';
 
-export const Header = () => {
-    return (
-        <h1 className='header'>Star Wars Lore Search Engine</h1>
-    );
+export const Header = (props) => {
+  const headerClickHandler = () => {
+    props.onClickHandler(true);
+  };
+
+  return (
+    <Button headButton onClick={headerClickHandler}>
+      Star Wars Lore Search Engine
+    </Button>
+  );
 };

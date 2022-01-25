@@ -1,5 +1,9 @@
 import styled, { css } from "styled-components";
 
+export const Paragraph = styled.p`
+color: yellow;
+size: 15px;`
+
 export const Button = styled.button`
   background: transparent;
   border-style: groove;
@@ -8,7 +12,7 @@ export const Button = styled.button`
 
   ${(props) =>
     props.tile &&
-    css`
+    css` // tiles component style
       margin: 20px 20px 20px 20px;
       border: 4px groove yellow;
       color: yellow;
@@ -18,6 +22,16 @@ export const Button = styled.button`
         transform: translate(0%, -10%);
         transition: 0.3s ease-out;
       }
+    `}
+  ${(props) =>
+    props.headButton &&
+    css` //Header Button style
+      background-color: black;
+      border-color: yellow;
+      color: yellow;
+      border-style: groove;
+      padding: 5px 10px 5px 10px;
+      font-size: 2rem
     `}
 `;
 
@@ -29,18 +43,19 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 export const Row = styled.div`
-margin: 30fr 20px 20px 20px
-color: yellow;
-background-color: transparent;
-text-align: center;
-display: flex;
-flex-direction: row;
-justify-content: space-evenly;
-@media (max-width: 750px) {
-  flex-direction: column;
-  align-items: center;
-}
+  margin: 30fr 20px 20px 20px;
+  color: yellow;
+  background-color: transparent;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  @media (max-width: 750px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Column = styled.div`
@@ -59,6 +74,7 @@ export const Container = styled.div`
   background-color: transparent;
   text-align: center;
 `;
+
 export const SearchFormDiv = styled.form`
   width: 70%;
   margin-left: 15%;
