@@ -35,7 +35,6 @@ export const Button = styled.button`
       border-style: groove;
       padding: 5px 10px 5px 10px;
       font-size: 2rem;
-      
     `}
 `;
 

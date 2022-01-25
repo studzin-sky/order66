@@ -14,6 +14,7 @@ export const Content = () => {
   const [tileData, setTileData] = useState();
 
   const tileErrorArray = [{ uid: 666, name: "Something went wrong!" }];
+  const noLoreArray = [{ uid: 777, name: "Nothing was found."}];
 
   const returnedType = (type) => {
     setPulledType(type);
@@ -49,7 +50,7 @@ export const Content = () => {
                 name: person.properties.name,
               };
             });
-            setSwData(transformedPeople);
+            transformedPeople.length === 0 ? (setSwData(noLoreArray)) : (setSwData(transformedPeople));
           })
           .catch(() => setSwData(tileErrorArray));
       case "planets":
