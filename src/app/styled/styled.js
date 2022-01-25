@@ -9,6 +9,9 @@ export const Button = styled.button`
   border-style: groove;
   border-color: yellow;
   color: yellow;
+  &:hover {
+    cursor: pointer;
+  }
 
   ${(props) =>
     props.tile &&
@@ -31,7 +34,8 @@ export const Button = styled.button`
       color: yellow;
       border-style: groove;
       padding: 5px 10px 5px 10px;
-      font-size: 2rem
+      font-size: 2rem;
+      
     `}
 `;
 
