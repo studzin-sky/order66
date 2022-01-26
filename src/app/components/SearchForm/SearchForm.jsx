@@ -22,11 +22,11 @@ export const SearchForm = (props) => {
           <label>The name, You have to write</label>
           <SearchInputDiv type="text" ref={inputRef} />
         </>
-        <SearchFilter 
-          selected={props.selected} 
-          onChangeType={typeFilter} 
+        <SearchFilter
+          selected={props.selected}
+          onChangeType={typeFilter}
         />
-        <Button type="submit">use the force</Button>
+        <Button force type="submit">use the force</Button>
       </SearchFormInputOutro>
     </SearchFormDiv>
   );

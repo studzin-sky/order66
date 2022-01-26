@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "../../styled/styled";
 
 export const Tiles = (props) => {
+
   const fetchData = (e) => {
     props.onReturnedData({
       id: e.target.id,
@@ -9,6 +10,7 @@ export const Tiles = (props) => {
     });
     props.onClickedTile(e.target.name);
     console.log(e.target.name);
+    console.log(e.target.id);
   };
 
   return props.items.map((item) => {

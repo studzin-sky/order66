@@ -13,6 +13,13 @@ export const Button = styled.button`
     cursor: pointer;
   }
 
+  ${(props) => props.force && css`
+  &:hover {
+    transform: translate(0%, 10%);
+    transition: 1.5s;
+  }`}
+
+  
   ${(props) =>
     props.tile &&
     css` // tiles component style
@@ -26,6 +33,7 @@ export const Button = styled.button`
         transition: 0.3s ease-out;
       }
     `}
+  
   ${(props) =>
     props.headButton &&
     css` //Header Button style
@@ -37,6 +45,8 @@ export const Button = styled.button`
       font-size: 2rem;
     `}
 `;
+
+
 
 export const Main = styled.div`
   background-color: black;
