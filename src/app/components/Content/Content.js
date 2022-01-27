@@ -14,7 +14,7 @@ export const Content = () => {
   const [tileData, setTileData] = useState();
 
   const tileErrorArray = [{ uid: 666, name: "Something went wrong!" }];
-  const noLoreArray = [{ uid: 777, name: "Nothing was found."}];
+  const noLoreArray = [{ uid: 777, name: "This is not the Lore You're looking for..." }];
 
   const returnedType = (type) => {
     setPulledType(type);
@@ -27,17 +27,21 @@ export const Content = () => {
     };
     fetchTile(pulledSearchFormObject);
   };
-  const historyHandler = (histValue) => {
+
+  const historyHandler = (histObject) => {
     setHistory((prevHistory) => {
       return [
         ...prevHistory.slice(-4),
         {
-          name: histValue,
-          id: Math.random().toString(),
+          name: histObject.name, //name of the Tile
+          uid: Math.random().toString(),
+          type: histObject.type,
+          id: histObject.id //type taken from the Tile
         },
       ];
     });
   };
+
   const fetchTile = (subValue) => {
     switch (subValue.type) {
       case "people":
@@ -50,7 +54,9 @@ export const Content = () => {
                 name: person.properties.name,
               };
             });
-            transformedPeople.length === 0 ? (setSwData(noLoreArray)) : (setSwData(transformedPeople));
+            transformedPeople.length === 0
+              ? setSwData(noLoreArray)
+              : setSwData(transformedPeople);
           })
           .catch(() => setSwData(tileErrorArray));
       case "planets":
@@ -104,6 +110,10 @@ export const Content = () => {
   const idData = (type) => {
     setTileData(type);
   };
+
+  const HistoryLoreData = (hObject) => {
+    setTileData(hObject);
+  }
   const pulledTypeVal = pulledType;
 
   return (
@@ -126,7 +136,10 @@ export const Content = () => {
           <LoreData item={tileData} />
         </Column>
         <Column>
-          <History history={history} />
+          <History 
+            history={history} 
+            onReturnedHData={HistoryLoreData} 
+          />
         </Column>
       </Row>
     </>

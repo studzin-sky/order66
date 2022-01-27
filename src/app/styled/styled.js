@@ -46,6 +46,10 @@ export const Button = styled.button`
     `}
 `;
 
+export const List = styled.li`
+&:hover {
+  cursor: pointer;
+}`;
 
 
 export const Main = styled.div`
