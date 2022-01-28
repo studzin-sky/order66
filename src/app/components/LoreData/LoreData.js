@@ -171,7 +171,7 @@ export const LoreData = (props) => {
       setLoreArray(cleanObj);
     };
   }, [props.item]);
-
+ //Displays Loading on Lore when fetch is in action
   
     return (
       <Container>

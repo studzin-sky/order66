@@ -18,8 +18,10 @@ export const Tiles = (props) => {
     return (
       <Button
         tile
-        {...(item.uid === 777 ? {disabled: true} : {disabled: false})} 
-        // if nothing found id 777 then disable button
+        {...(item.uid === 777
+          ? { disabled: true, title: "You found nothing", disabledButton: true }
+          : { disabled: false })}
+        // if nothing found then disable button and a message
         key={item.uid}
         id={item.uid}
         name={item.name}

@@ -13,6 +13,11 @@ export const Button = styled.button`
     cursor: pointer;
   }
 
+  ${(props) => props.disabledButton && css`
+  &:hover {
+    cursor: default;
+  }`}
+
   ${(props) => props.force && css`
   &:hover {
     transform: translate(0%, 10%);
@@ -37,15 +42,20 @@ export const Button = styled.button`
   ${(props) =>
     props.headButton &&
     css` //Header Button style
-      background-color: black;
-      border-color: yellow;
-      color: yellow;
-      border-style: groove;
       padding: 5px 10px 5px 10px;
       font-size: 2rem;
     `}
+
+  ${(props) => props.disabledHeadButton && css`
+      padding: 5px 10px 5px 10px;
+      font-size: 2rem;
+      &:hover {
+        cursor: default;
+      }`}
 `;
 
+
+    
 export const List = styled.li`
 &:hover {
   cursor: pointer;
