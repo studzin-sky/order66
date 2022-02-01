@@ -13,10 +13,10 @@ export const Content = () => {
   const [swData, setSwData] = useState([]);
   const [tileData, setTileData] = useState();
 
-  const tileErrorArray = [{ url: 666, name: "Something went wrong!" }];
+  const tileErrorArray = [{ uid: 666, name: "Something went wrong!" }];
   //object displayed when error on fetch
   const noLoreArray = [
-    { url: 777, name: "This is not the Lore You're looking for..." },
+    { uid: 777, name: "This is not the Lore You're looking for..." },
   ];
   //object displayed when nothing was found
 
@@ -49,19 +49,19 @@ export const Content = () => {
   const transformedMovies = (data) =>
     data.results.map((movieData) => {
       return {
-        url: movieData.url,
+        uid: movieData.url,
         name: movieData.title,
       };
     });
   // helper function to transform movie data due to swapi error
 
-  /*   const transformedPeople = (data) =>
-    data.result.map((person) => {
+     const transformedRecord = (data) =>
+    data.results.map((record) => {
       return {
-        uid: person.uid,
-        name: person.properties.name,
+        uid: record.url,
+        name: record.name,
       };
-    }); */
+    });
   //helper function to transform people data because the search in swapi is broken
 
   const fetchTile = (subValue) => {
@@ -74,7 +74,7 @@ export const Content = () => {
           ? setSwData(noLoreArray) // if nothing found display info
           : subValue.type === "films" // films type has title attribute instead of name
           ? setSwData(transformedMovies(data))
-          : setSwData(data.results)
+          : setSwData(transformedRecord(data))
       )
       .catch(() => setSwData(tileErrorArray)); // display error message when failed
   };

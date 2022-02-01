@@ -6,7 +6,7 @@ export const LoreData = (props) => {
   const [loreArray, setLoreArray] = useState([]);
   const errorLore = () => {
     return {
-      uid: 1,
+      id: 1,
       title: "Something went wrong!",
     };
   }; // error object displayed when fetch catches error
@@ -133,7 +133,7 @@ export const LoreData = (props) => {
     fetchLoreHandler(props.item);
     return () => {
       const cleanObj = {
-        id: 1,
+        uid: 1,
         title: "Loading",
       };
       setLoreArray(cleanObj);
