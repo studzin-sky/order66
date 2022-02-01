@@ -35,7 +35,7 @@ export const Content = () => {
   const historyHandler = (histObject) => {
     setHistory((prevHistory) => {
       return [
-        ...prevHistory.slice(-4),
+        ...prevHistory.slice(-4), //maximum 5 records kept
         {
           name: histObject.name, //name of the Tile
           uid: Math.random().toString(),
@@ -64,6 +64,7 @@ export const Content = () => {
     });
   //helper function to transform people data because the search in swapi is broken
 
+  // fetching data from swapi.dev based on the type and name input from SearchForm
   const fetchTile = (subValue) => {
     return fetch(
       `https://swapi.dev/api/${subValue.type}/?search=${subValue.name}&format=json`
@@ -79,72 +80,7 @@ export const Content = () => {
       .catch(() => setSwData(tileErrorArray)); // display error message when failed
   };
 
-  /* const fetchTile = (subValue) => {
-    //if the user searches and input is empty then Tiles displays objects from type chosen
-    if (subValue.name === "")
-      fetch(`https://www.swapi.tech/api/${subValue.type}`)
-        .then((res) => res.json())
-        .then((data) =>
-          subValue.type === "films"
-            ? setSwData(transformedMovies(data))
-            : setSwData(data.results)
-        )
-        .catch(() => setSwData(tileErrorArray));
-    //swapi tech is not working properly so films array is result and the rest is results
-    else
-      switch (subValue.type) {
-        case "people":
-          return fetch(
-            `https://www.swapi.tech/api/people/?name=${subValue.name}`
-          )
-            .then((res) => res.json())
-            .then((data) => {
-              transformedPeople(data).length === 0
-                ? setSwData(noLoreArray)
-                : setSwData(transformedPeople(data));
-            })
-            .catch(() => setSwData(tileErrorArray));
-        case "planets":
-          return fetch(
-            `https://www.swapi.tech/api/planets/?name=${subValue.name}`
-          )
-            .then((res) => res.json())
-            .then((data) => setSwData(data.results))
-            .catch(() => setSwData(tileErrorArray));
-        case "starships":
-          return fetch(
-            `https://www.swapi.tech/api/starships/?name=${subValue.name}`
-          )
-            .then((res) => res.json())
-            .then((data) => setSwData(data.results))
-            .catch(() => setSwData(tileErrorArray));
-        case "films":
-          return fetch(
-            `https://www.swapi.tech/api/films/?title=${subValue.name}`
-          )
-            .then((res) => res.json())
-            .then((data) => setSwData(transformedMovies(data)))
-            .catch(() => setSwData(tileErrorArray));
-        case "vehicles":
-          return fetch(
-            `https://www.swapi.tech/api/vehicles/?name=${subValue.name}`
-          )
-            .then((res) => res.json())
-            .then((data) => setSwData(data.results))
-            .catch(() => setSwData(tileErrorArray));
-        case "species":
-          return fetch(
-            `https://www.swapi.tech/api/species/?name=${subValue.name}`
-          )
-            .then((res) => res.json())
-            .then((data) => setSwData(data.results))
-            .catch(() => setSwData(tileErrorArray));
-        default:
-          break;
-      }
-  }; */
-  //SWAPI.tech seems to have an error with searching, only people
-  //can be searched through, the rest is rendering randomly
+
 
   const idData = (type) => {
     setTileData(type);

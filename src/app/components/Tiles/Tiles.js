@@ -11,7 +11,7 @@ export const Tiles = (props) => {
     props.onClickedTile({
       name: e.target.name,
       type: props.type,
-      id: e.target.id, //url is the url to specific object
+      id: e.target.id, //id is the url to specific object
     }); //created object to deal with switch on click
   };
 
