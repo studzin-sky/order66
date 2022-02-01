@@ -13,10 +13,10 @@ export const Content = () => {
   const [swData, setSwData] = useState([]);
   const [tileData, setTileData] = useState();
 
-  const tileErrorArray = [{ uid: 666, name: "Something went wrong!" }];
+  const tileErrorArray = [{ url: 666, name: "Something went wrong!" }];
   //object displayed when error on fetch
   const noLoreArray = [
-    { uid: 777, name: "This is not the Lore You're looking for..." },
+    { url: 777, name: "This is not the Lore You're looking for..." },
   ];
   //object displayed when nothing was found
 
@@ -39,32 +39,47 @@ export const Content = () => {
         {
           name: histObject.name, //name of the Tile
           uid: Math.random().toString(),
-          type: histObject.type,
-          id: histObject.id, //type taken from the Tile
+          type: histObject.type, // type taken from Tile
+          id: histObject.id, 
         },
       ];
     });
   };
 
   const transformedMovies = (data) =>
-    data.result.map((movieData) => {
+    data.results.map((movieData) => {
       return {
-        uid: movieData.uid,
-        name: movieData.properties.title,
+        url: movieData.url,
+        name: movieData.title,
       };
     });
   // helper function to transform movie data due to swapi error
 
-  const transformedPeople = (data) =>
+  /*   const transformedPeople = (data) =>
     data.result.map((person) => {
       return {
         uid: person.uid,
         name: person.properties.name,
       };
-    });
+    }); */
   //helper function to transform people data because the search in swapi is broken
 
   const fetchTile = (subValue) => {
+    return fetch(
+      `https://swapi.dev/api/${subValue.type}/?search=${subValue.name}&format=json`
+    )
+      .then((res) => res.json())
+      .then((data) =>
+        data.count === 0
+          ? setSwData(noLoreArray) // if nothing found display info
+          : subValue.type === "films" // films type has title attribute instead of name
+          ? setSwData(transformedMovies(data))
+          : setSwData(data.results)
+      )
+      .catch(() => setSwData(tileErrorArray)); // display error message when failed
+  };
+
+  /* const fetchTile = (subValue) => {
     //if the user searches and input is empty then Tiles displays objects from type chosen
     if (subValue.name === "")
       fetch(`https://www.swapi.tech/api/${subValue.type}`)
@@ -127,7 +142,7 @@ export const Content = () => {
         default:
           break;
       }
-  };
+  }; */
   //SWAPI.tech seems to have an error with searching, only people
   //can be searched through, the rest is rendering randomly
 
