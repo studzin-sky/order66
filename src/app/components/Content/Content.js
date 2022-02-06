@@ -40,7 +40,7 @@ export const Content = () => {
           name: histObject.name, //name of the Tile
           uid: Math.random().toString(),
           type: histObject.type, // type taken from Tile
-          id: histObject.id, 
+          id: histObject.id,
         },
       ];
     });
@@ -55,7 +55,7 @@ export const Content = () => {
     });
   // helper function to transform movie data due to swapi error
 
-     const transformedRecord = (data) =>
+  const transformedRecord = (data) =>
     data.results.map((record) => {
       return {
         uid: record.url,
@@ -70,17 +70,16 @@ export const Content = () => {
       `https://swapi.dev/api/${subValue.type}/?search=${subValue.name}&format=json`
     )
       .then((res) => res.json())
-      .then((data) =>
-        data.count === 0
-          ? setSwData(noLoreArray) // if nothing found display info
-          : subValue.type === "films" // films type has title attribute instead of name
-          ? setSwData(transformedMovies(data)) // if type is films use the movies helper function
-          : setSwData(transformedRecord(data)) // if it is the rest transform url to uid
+      .then(
+        (data) =>
+          data.count === 0
+            ? setSwData(noLoreArray) // if nothing found display info
+            : subValue.type === "films" // films type has title attribute instead of name
+            ? setSwData(transformedMovies(data)) // if type is films use the movies helper function
+            : setSwData(transformedRecord(data)) // if it is the rest transform url to uid
       )
       .catch(() => setSwData(tileErrorArray)); // display error message when failed
   };
-
-
 
   const idData = (type) => {
     setTileData(type);
@@ -91,7 +90,6 @@ export const Content = () => {
     setTileData(hObject);
   };
   //manages state from History onClick, sends it to LoreData
-  const pulledTypeVal = pulledType;
 
   return (
     <>
@@ -104,7 +102,7 @@ export const Content = () => {
         <Column>
           <Tiles
             items={swData}
-            type={pulledTypeVal}
+            type={pulledType}
             onReturnedData={idData}
             onClickedTile={historyHandler}
           />
