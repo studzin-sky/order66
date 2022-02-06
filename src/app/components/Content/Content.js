@@ -62,7 +62,7 @@ export const Content = () => {
         name: record.name,
       };
     });
-  //helper function to transform people data because the search in swapi is broken
+  //helper function to transform record where uid is the url
 
   // fetching data from swapi.dev based on the type and name input from SearchForm
   const fetchTile = (subValue) => {
@@ -74,8 +74,8 @@ export const Content = () => {
         data.count === 0
           ? setSwData(noLoreArray) // if nothing found display info
           : subValue.type === "films" // films type has title attribute instead of name
-          ? setSwData(transformedMovies(data))
-          : setSwData(transformedRecord(data))
+          ? setSwData(transformedMovies(data)) // if type is films use the movies helper function
+          : setSwData(transformedRecord(data)) // if it is the rest transform url to uid
       )
       .catch(() => setSwData(tileErrorArray)); // display error message when failed
   };
