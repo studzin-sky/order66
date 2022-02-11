@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 
 export const LoreType = (props) => {
     console.log(props.lore);
