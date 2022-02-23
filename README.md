@@ -1,3 +1,5 @@
+<a href="https://studzin-sky.github.io/order66/">Live Project on GitHub Pages</a>
+
 <b>ATM branch I'm working on is called feature. In the meantime working on redux implementation on another branch called redux </b>
 <br>
 This is my own react app created with Swapi.tech Api.
