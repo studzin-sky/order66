@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/order66/static/css/main.638f215c.css",
+    "main.js": "/order66/static/js/main.ebfa60c5.js",
+    "static/js/787.41c10e78.chunk.js": "/order66/static/js/787.41c10e78.chunk.js",
+    "index.html": "/order66/index.html",
+    "main.638f215c.css.map": "/order66/static/css/main.638f215c.css.map",
+    "main.ebfa60c5.js.map": "/order66/static/js/main.ebfa60c5.js.map",
+    "787.41c10e78.chunk.js.map": "/order66/static/js/787.41c10e78.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.638f215c.css",
+    "static/js/main.ebfa60c5.js"
+  ]
+}
