@@ -120,10 +120,10 @@ export const SearchFormInputOutro = styled.div`
   background-color: transparent;
   border-style: groove;
   margin-top: 10px;
-  @media (max-width: 750px) {
+  @media (max-width: 460px) {
+    padding: 5px;
     justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
+    flex-direction: column;
   }
 `;
 
