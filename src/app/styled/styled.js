@@ -103,8 +103,12 @@ export const Container = styled.div`
 `;
 
 export const SearchFormDiv = styled.form`
-  width: 70%;
-  margin-left: 15%;
+  min-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  @media (max-width: 750px) {
+    min-width: 90%;
+  }
 `;
 
 export const SearchFormInputOutro = styled.div`
@@ -114,11 +118,11 @@ export const SearchFormInputOutro = styled.div`
   align-items: center;
   border-color: yellow;
   color: yellow;
+  padding: 10px 5px;
   background-color: transparent;
   border-style: groove;
-  padding: 5px 10px 5px 10px;
+  margin-top: 10px;
   @media (max-width: 750px) {
-    width: 80%;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
@@ -130,7 +134,6 @@ export const SearchInputDiv = styled.input`
   color: yellow;
   border-color: yellow;
   border-style: groove;
-  padding: 5px 5px 5px 5px;
   @media (max-width: 750px) {
     max-width: 20%;
   }
