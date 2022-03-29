@@ -72,13 +72,11 @@ export const Main = styled.div`
 `;
 
 export const Row = styled.div`
-  margin: 30fr 20px 20px 20px;
   color: yellow;
   background-color: transparent;
   text-align: center;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
   @media (max-width: 750px) {
     flex-direction: column;
     align-items: center;
@@ -88,7 +86,7 @@ export const Row = styled.div`
 export const Column = styled.div`
   display: flex;
   flex-direction: column;
-  width: 33%;
+  width: 40%;
   @media (max-width: 750px) {
     min-width: 90%;
   }
