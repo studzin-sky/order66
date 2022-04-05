@@ -1,7 +1,5 @@
 <a href="https://studzin-sky.github.io/order66/">Live Project on GitHub Pages</a>
 
-<b>ATM branch I'm working on is called feature. Didn't do the pull request yet to main. In the meantime working on redux implementation on another branch called redux </b>
-<br>
 This is my own react app created with Swapi.tech Api.
 <br>
 The main purpose of this app is a Star Wars Lore search engine, where the user can search for data fetched from the API.
