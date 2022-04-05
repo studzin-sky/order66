@@ -1,6 +1,6 @@
 <a href="https://studzin-sky.github.io/order66/">Live Project on GitHub Pages</a>
 
-This is my own react app created with Swapi.tech Api.
+This is my own react app created with Swapi.dev Api.
 <br>
 The main purpose of this app is a Star Wars Lore search engine, where the user can search for data fetched from the API.
 <br>
